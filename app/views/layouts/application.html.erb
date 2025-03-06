@@ -14,10 +14,19 @@
       <%= flash["notice"] %>
     </div>
     <div>
+      <!-- if no user logged-in, display signup and login links -->
+      <% @user = User.find_by({"id" => session["user_id"]})%>
+      <%if session["user_id"] == nil %>
       <a href="/">Home</a>
-      <a href="/logout">Logout</a>
-      <a href="/login">Login</a>
+      |
+      <a href="/sessions/new">Login</a>
+      |
       <a href="/users/new">Signup</a>
+    <%else%>
+      Welcome, <%= @user["first_name"]%>!
+      |
+      <a href="/logout">Logout</a>
+      <%end%>
     </div>
 
     <%= yield %>
