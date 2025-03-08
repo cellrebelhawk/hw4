@@ -1,6 +1,14 @@
-<h1><%= @place["name"] %></h1>
+<% if User.find_by({ "id" => session["user_id"] }) != nil %>
 
-<h2>My Entries</h2>
+<h1><%= @places["name"] %></h1>
+
+<p>
+  <button>
+    <a href="/entries/new?place_id=<%= @places["id"] %>">New Post</a>
+  </button>
+</p>
+
+<h2>My experiences in <%=@places["name"]%></h2>
 <% for entry in @entries %>
   <h3><%= entry["title"] %></h3>
   <h4><%= entry["occurred_on"] %></h4>
@@ -8,9 +16,13 @@
 <% end %>
 
 <p>
-  <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
-</p>
-
-<p>
   <a href="/places">Back to All Places</a>
 </p>
+
+
+<% else %>
+  You must be 
+  <a href="/login">logged in</a> 
+  to access this page. You will be redirected automatically.
+  <meta http-equiv="refresh" content="3; URL=/login/">
+<% end %>

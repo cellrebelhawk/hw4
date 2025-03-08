@@ -10,15 +10,15 @@ class SessionsController < ApplicationController
       if BCrypt::Password.new(@user["password"]) == params["password"]
         session["user_id"] = @user["id"]
         flash["notice"] = "Welcome!"
-        redirect_to "/users/#{@user["id"]}"
+        redirect_to "/places/"
       else
       flash["notice"] = "Your username or password are incorrect or do not exist"
-        redirect_to "/sessions/new"
+        redirect_to "/login"
       end
     # 4. if the user doesn't exist or they don't know their password -> login fails
     else
       flash["notice"] = "Your username or password are incorrect or do not exist"
-      redirect_to "/sessions/new"
+      redirect_to "/login"
     end
   end
 

@@ -1,3 +1,5 @@
+<% if User.find_by({ "id" => session["user_id"] }) != nil %>
+
 <h1>My User Account</h1>
 
 <dl>
@@ -8,3 +10,10 @@
   <dt>Email:</dt>
   <dd><%= @user["email"] %></dd>
 </dl>
+
+<% else %>
+  You must be 
+  <a href="/login">logged in</a> 
+  to access this page. You will be redirected automatically.
+  <meta http-equiv="refresh" content="3; URL=/login/">
+<% end %>

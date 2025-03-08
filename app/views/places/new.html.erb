@@ -1,3 +1,5 @@
+<% if User.find_by({ "id" => session["user_id"] }) != nil %>
+
 <h1>New Place</h1>
 
 <form action="/places" method="post">
@@ -6,5 +8,15 @@
     <input type="text" name="name" id="name_input">
   </p>
 
+  <input type="hidden" name="user_id" value="<%= session["user_id"] %>">
+
   <button>Save</button>
 </form>
+
+
+<% else %>
+  You must be 
+  <a href="/login">logged in</a> 
+  to access this page. You will be redirected automatically.
+  <meta http-equiv="refresh" content="3; URL=/login/">
+<% end %>
