@@ -3,7 +3,8 @@
 <% if User.find_by({ "id" => session["user_id"] }) != nil %>
 
 <p>
-  <button>
+  <a class="btn btn-primary" href="/places/new" role="button">New place</a>
+  <button type="button" class="btn btn-outline-primary">
     <a href="/places/new">New place</a>
   </button>
 </p>
