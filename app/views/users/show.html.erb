@@ -1,17 +1,16 @@
 <% if User.find_by({ "id" => session["user_id"] }) != nil %>
 
-<h1>My User Account</h1>
+<h1>My Profile</h1>
 
-<dl>
-  <dt>First Name:</dt>
-  <dd><%= @user["first_name"] %></dd>
-  <dt>Last Name:</dt>
-  <dd><%= @user["last_name"] %></dd>
-  <dt>Username:</dt>
-  <dd><%= @user["username"] %></dd>
-  <dt>Email:</dt>
-  <dd><%= @user["email"] %></dd>
-</dl>
+<br>
+
+<ul class="list-group">
+  <li class="list-group-item active" aria-current="true">User Info</li>
+  <li class="list-group-item"><b>First Name: </b><%= @user["first_name"]%></li>
+  <li class="list-group-item"><b>Last Name: </b><%= @user["last_name"]%></li>
+  <li class="list-group-item"><b>User name: </b><%= @user["username"]%></li>
+  <li class="list-group-item"><b>Email: </b><%= @user["email"]%></li>
+</ul>
 
 <% else %>
   You must be 

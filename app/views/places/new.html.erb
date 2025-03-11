@@ -2,15 +2,17 @@
 
 <h1>New Place</h1>
 
+<br>
+
 <form action="/places" method="post">
   <p>
-    <label for="name_input">Name</label>
-    <input type="text" name="name" id="name_input">
+    <label for="name_input" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="name_input">
   </p>
 
   <input type="hidden" name="user_id" value="<%= session["user_id"] %>">
 
-  <button>Save</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 

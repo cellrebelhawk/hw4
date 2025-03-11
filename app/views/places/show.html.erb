@@ -1,12 +1,15 @@
 <% if User.find_by({ "id" => session["user_id"] }) != nil %>
 
-<h1><%= @places["name"] %></h1>
+<h1>My experiences in <%= @places["name"] %></h1>
+
+<br>
 
 <p>
   <a class="btn btn-primary" href="/entries/new?place_id=<%= @places["id"] %>">New Post</a>
 </p>
 
-<h2>My experiences in <%=@places["name"]%></h2>
+<br>
+
 <div class="container text-left">
   <div class="row g-4">
    <% for entry in @entries %>
