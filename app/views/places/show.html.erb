@@ -3,20 +3,33 @@
 <h1><%= @places["name"] %></h1>
 
 <p>
-  <button>
-    <a href="/entries/new?place_id=<%= @places["id"] %>">New Post</a>
-  </button>
+  <a class="btn btn-primary" href="/entries/new?place_id=<%= @places["id"] %>">New Post</a>
 </p>
 
 <h2>My experiences in <%=@places["name"]%></h2>
-<% for entry in @entries %>
-  <h3><%= entry["title"] %></h3>
-  <h4><%= entry["occurred_on"] %></h4>
-  <p><%= entry["description"] %></p>
-<% end %>
+<div class="container text-left">
+  <div class="row g-4">
+   <% for entry in @entries %>
+      <div class="col">
+        <div class="container">
+          <div class="card" style="width: 18rem;">
+<!--             <img src="..." class="card-img-top" alt="...">-->
+            <div class="card-body">
+              <h5 class="card-title"><%= entry["title"] %></h5>
+              <h6 class="card-title"><%= entry["occurred_on"] %></h5>
+              <p class="card-text"><%= entry["description"] %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
 
 <p>
-  <a href="/places">Back to All Places</a>
+  <a class="btn btn-secondary" href="/places">Back to All Places</a>
 </p>
 
 

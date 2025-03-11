@@ -4,14 +4,17 @@
 
 <p>
   <a class="btn btn-primary" href="/places/new" role="button">New place</a>
-  <button type="button" class="btn btn-outline-primary">
-    <a href="/places/new">New place</a>
-  </button>
 </p>
 
-<ul>
+    
+<ul class="list-group">
   <% for place in @places %>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+    <a href="/places/<%= place["id"]%>" class="list-group-item d-flex justify-content-between align-items-center">
+      <%= place["name"] %>
+      <span class="badge text-bg-primary rounded-pill">
+        <%=Entry.where({"user_id" => session["user_id"], "place_id" => place["id"]}).count%>
+      </span>
+    </li></a>
   <% end %>
 </ul>
 
@@ -21,3 +24,37 @@
   to access this page. You will be redirected automatically.
   <meta http-equiv="refresh" content="3; URL=/login/">
 <% end %>
+
+
+<!-- 
+<% for place in @places %>
+  <div class="container">
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= place["name"] %></h5>
+        <a href="/places/<%= place["id"] %>" class="btn btn-primary">See entries</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="container text-center">
+  <div class="row g-4">
+    <% for place in @places %>
+      <div class="col">
+        <div class="container">
+          <div class="card" style="width: 18rem;">
+             <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= place["name"] %></h5>
+              <a href="/places/<%= place["id"]%>" class="btn btn-outline-primary">See entries</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+-->

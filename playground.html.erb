@@ -15,3 +15,27 @@
       <a href="/logout">Logout</a>
       <%end%>
     </div>
+
+
+    
+<ul>
+  <% for place in @places %>
+    <li>
+      <a href="/places/<%= place["id"] %>"><%= place["name"] %></a>
+    </li>
+  <% end %>
+</ul>
+
+
+
+  <button>
+    <a href="/entries/new?place_id=<%= @places["id"] %>">New Post</a>
+  </button>
+
+  <h2>My experiences in <%=@places["name"]%></h2>
+<% for entry in @entries %>
+  <h3><%= entry["title"] %></h3>
+  <h4><%= entry["occurred_on"] %></h4>
+  <p><%= entry["description"] %></p>
+<% end %>
+

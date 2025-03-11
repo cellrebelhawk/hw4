@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all.where({"user_id" => session["user_id"]})
-  end
+end
 
   def show
     @places = Place.find_by({ "id" => params["id"], "user_id" => session["user_id"]})
