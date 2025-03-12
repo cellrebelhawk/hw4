@@ -1,15 +1,33 @@
 class PlacesController < ApplicationController
 
   def index
-    @places = Place.all.where({"user_id" => session["user_id"]})
-end
+    @user = User.find_by({ "id" => session["user_id"] })
+    if @user != nil
+      @places = Place.all.where({"user_id" => session["user_id"]})
+    else
+      flash["notice"] = "Log in first before accessing this page."
+      redirect_to "/login"
+    end
+  end
 
   def show
-    @places = Place.find_by({ "id" => params["id"], "user_id" => session["user_id"]})
-    @entries = Entry.where({ "place_id" => @places["id"], "user_id" => session["user_id"]})
+    @user = User.find_by({ "id" => session["user_id"] })
+    if @user != nil
+      @places = Place.find_by({ "id" => params["id"], "user_id" => session["user_id"]})
+      @entries = Entry.where({ "place_id" => @places["id"], "user_id" => session["user_id"]})
+    else
+      flash["notice"] = "Log in first before accessing this page."
+      redirect_to "/login"
+    end
   end
 
   def new
+    @user = User.find_by({ "id" => session["user_id"] })
+    if @user != nil
+    else
+      flash["notice"] = "Log in first before accessing this page."
+      redirect_to "/login"
+    end
   end
 
   def create

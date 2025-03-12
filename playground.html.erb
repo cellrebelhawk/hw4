@@ -85,3 +85,15 @@
   </div>
 </div>
 -->
+
+
+<% if User.find_by({ "id" => session["user_id"] }) != nil %>
+
+Insert HMTL
+
+<% else %>
+  You must be 
+  <a href="/login">logged in</a> 
+  to access this page. You will be redirected automatically.
+  <meta http-equiv="refresh" content="3; URL=/login/">
+<% end %>
