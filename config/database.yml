@@ -23,6 +23,6 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: travel_tracker_production
-  username: travel_tracker
+  database: travel-tracker_production
+  username: travel-tracker
   password: <%= ENV["TRAVEL_TRACKER_DATABASE_PASSWORD"] %>
